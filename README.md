@@ -5,7 +5,7 @@
 from manifest_proto.manifest_pb2_grpc import ManifestServiceStub
 from manifest_proto.manifest_pb2 import GetSkuListBySpu
 from marcus import GrpcLocust
-from locust import TaskSet
+from locust import TaskSet, task
 
 class ManifestTest(GrpcLocust):
     stub_cls = ManifestServiceStub
