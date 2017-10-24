@@ -4,9 +4,7 @@
 
 from manifest_proto.manifest_pb2_grpc import ManifestServiceStub
 from manifest_proto.manifest_pb2 import GetSkuListBySpu
-
 from marcus import GrpcLocust
-
 class ManifestTest(GrpcLocust):
     stub_cls = ManifestServiceStub
     channel = "localhost:50002"
