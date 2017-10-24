@@ -1,10 +1,11 @@
 # Test
 
 
-
+```
 from manifest_proto.manifest_pb2_grpc import ManifestServiceStub
 from manifest_proto.manifest_pb2 import GetSkuListBySpu
 from marcus import GrpcLocust
+
 class ManifestTest(GrpcLocust):
     stub_cls = ManifestServiceStub
     channel = "localhost:50002"
@@ -21,3 +22,4 @@ class ManifestTest(GrpcLocust):
         def list(self):
             req = GetSkuListRequest(store_id="12345", spu_id=self.get_spu_id())
             res = self.client.GetSkuListBySpu(req)
+```
