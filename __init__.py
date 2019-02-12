@@ -6,16 +6,12 @@ from locust import Locust, events
 
 class GrpcClient(object):
     def __init__(self, stub_cls, channel, timeout):
-        self.stub_cls = stub_cls
-        self.channel = channel
+        self.stub = stub_cls(grpc.insecure_channel(channel))
         self.timeout = timeout
 
     def __getattr__(self, name):
         def wrapper(argument):
-            channel = grpc.insecure_channel(self.channel)
-
-            stub = self.stub_cls(channel)
-            func = getattr(stub, name)
+            func = getattr(self.stub, name)
             start_time = time.time()
 
             result = None
